@@ -8,7 +8,7 @@ dotenv.config();
 app.use(bodyParser.json());
 
 
-const FIXED_MESSAGE = "Xin chào! Đây là tin nhắn tự động từ Fanpage. Bạn cần hỗ trợ gì không?";
+const FIXED_MESSAGE = "Xin chào Hoàng Em! Đây là tin nhắn tự động từ Fanpage. Bạn cần hỗ trợ gì không?";
 
 // Xác thực Webhook với Facebook
 app.get("/webhook", (req, res) => {
