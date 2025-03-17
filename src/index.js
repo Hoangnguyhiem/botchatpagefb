@@ -7,7 +7,7 @@ const app = express();
 dotenv.config();
 app.use(bodyParser.json());
 
-
+const PORT = process.env.PORT || 3000;
 const FIXED_MESSAGE = "Xin chào Hoàng Em! Đây là tin nhắn tự động từ Fanpage. Bạn cần hỗ trợ gì không?";
 
 // Xác thực Webhook với Facebook
@@ -58,5 +58,9 @@ async function sendMessage(senderId, text) {
   }
 }
 
-// Khởi động server
-export const viteNodeApp = app;
+app.listen(PORT, () => {
+  console.log(`Server is running on port ${PORT}`);
+});
+
+// // Khởi động server
+// export const viteNodeApp = app;
