@@ -10,6 +10,11 @@ app.use(bodyParser.json());
 const PORT = process.env.PORT || 3000;
 const FIXED_MESSAGE = "Xin chào Hoàng Em! Đây là tin nhắn tự động từ Fanpage. Bạn cần hỗ trợ gì không?";
 
+app.get("/", (req, res) => {
+  res.send("Home");
+});
+
+
 // Xác thực Webhook với Facebook
 app.get("/webhook", (req, res) => {
   const VERIFY_TOKEN = process.env.VERIFY_TOKEN;
