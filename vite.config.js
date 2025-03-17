@@ -15,7 +15,7 @@ export default defineConfig({
             adapter: "express",
 
             // tell the plugin where is your project entry
-            appPath: "./src/index.js",
+            appPath: "./index.js",
 
             // Optional, default: 'viteNodeApp'
             // the name of named export of you app from the appPath file
