@@ -1,12 +1,12 @@
-require("dotenv").config();
-const express = require("express");
-const bodyParser = require("body-parser");
-const axios = require("axios");
+import dotenv from "dotenv";
+import express from "express";
+import bodyParser from "body-parser";
+import axios from "axios";
 
 const app = express();
-const PORT = process.env.PORT || 3000;
-
+dotenv.config();
 app.use(bodyParser.json());
+
 
 const FIXED_MESSAGE = "Xin chào! Đây là tin nhắn tự động từ Fanpage. Bạn cần hỗ trợ gì không?";
 
@@ -35,7 +35,7 @@ app.post("/webhook", async (req, res) => {
       sendMessage(senderId, FIXED_MESSAGE);
     });
 
-    res.status(200).send("EVENT_RECEIVED");
+    res.status(200).json("EVENT_RECEIVE");
   } else {
     res.sendStatus(404);
   }
@@ -47,7 +47,7 @@ async function sendMessage(senderId, text) {
 
   try {
     await axios.post(
-      `https://graph.facebook.com/v12.0/me/messages?access_token=${PAGE_ACCESS_TOKEN}`,
+      `https://graph.facebook.com/v17.0/me/messages?access_token=${PAGE_ACCESS_TOKEN}`,
       {
         recipient: { id: senderId },
         message: { text: text },
@@ -59,6 +59,4 @@ async function sendMessage(senderId, text) {
 }
 
 // Khởi động server
-app.listen(PORT, () => {
-  console.log(`Bot đang chạy trên cổng ${PORT}`);
-});
+export const viteNodeApp = app;
